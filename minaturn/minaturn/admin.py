@@ -11,7 +11,16 @@ class QueueAdmin(admin.ModelAdmin):
 
 @admin.register(QueueEntry)
 class QueueEntryAdmin(admin.ModelAdmin):
-    list_display = ("msisdn", "queue", "joined_at", "left")
-    list_filter = ("left", "queue")
-    search_fields = ("msisdn",)
-    ordering = ("joined_at",)
+    list_display = (
+        "msisdn",
+        "full_name",
+        "queue",
+        "status",
+        "joined_at",
+        "started_at",
+        "served_at",
+        "left",
+    )
+    list_filter = ("queue", "status", "left")
+    search_fields = ("msisdn", "full_name")
+    readonly_fields = ("joined_at", "started_at", "served_at")  # auto timestamps

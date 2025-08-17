@@ -42,3 +42,20 @@ def queue_position(request, queue_id, msisdn):
         "queue_id": str(queue_id),
         "position": position
     })
+
+
+"""
+For a given queue, we need the time to AVG_TIME_TO_PROCESS. 
+
+Example:
+ - A user joins the queue at 10:00 AM
+ - The user is processed at 10:30 AM
+ - The user gets served at 10:45 AM
+Time to process for this user = 15 minutes
+
+Do this for all users in the queue IN THE LAST 30 MINUTES
+This will help us understand the average time to process a user in the queue.
+This can be used to estimate the time for the next user in the queue.
+
+
+"""
