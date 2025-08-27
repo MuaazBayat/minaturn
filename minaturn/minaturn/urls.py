@@ -21,6 +21,13 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("queue/create/", views.create_queue, name="create_queue"),
+    path("queue/<str:queue_id>/flush/", views.flush_queue, name="flush_queue"),
+    path("queue/<str:queue_id>/delete/", views.delete_queue, name="delete_queue"),
     path("queue/join/", views.join_queue, name="join-queue"),
-    path("queue/<uuid:queue_id>/position/<str:msisdn>/", views.queue_position, name="queue-position")
+    path("queue/<str:queue_id>/leave/<str:msisdn>/", views.leave_queue, name="leave_queue"),
+    path("queue/<str:queue_id>/status/<str:msisdn>/", views.get_status, name="get_status"),
+    path("queue/<str:queue_id>/status/<str:msisdn>/update/", views.update_status, name="update_status"),
+    path("queue/<str:queue_id>/position/<str:msisdn>/", views.queue_position, name="queue-position"),
+    path("queues/all/", views.all_queues_with_entries, name="all_queues_with_entries"),
 ]
